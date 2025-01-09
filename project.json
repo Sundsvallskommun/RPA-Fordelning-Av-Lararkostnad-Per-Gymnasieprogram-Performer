@@ -29,10 +29,10 @@
       "*password*"
     ],
     "executionType": "Workflow",
-    "readyForPiP": false,
-    "startsInPiP": false,
+    "readyForPiP": true,
+    "startsInPiP": true,
     "mustRestoreAllDependencies": true,
-    "pipType": "ChildSession"
+    "pipType": "SecondaryDesktop"
   },
   "designOptions": {
     "projectProfile": "Developement",
