@@ -6,8 +6,8 @@
   "dependencies": {
     "API.Gateway_General": "[1.0.4-alpha.2]",
     "APIGateway_Citizen": "[1.1.6]",
-    "Berit": "[1.4.16-alpha.1]",
-    "Heroma": "[2.1.22]",
+    "Berit": "[2.0.6]",
+    "Heroma": "[2.1.23]",
     "UiPath.Excel.Activities": "[2.20.2]",
     "UiPath.System.Activities": "[24.3.1]",
     "UiPath.Testing.Activities": "[23.4.1]",
