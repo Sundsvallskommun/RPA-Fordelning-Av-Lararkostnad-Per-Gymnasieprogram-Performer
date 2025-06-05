@@ -6,7 +6,7 @@
   "dependencies": {
     "API.Gateway_General": "[1.0.4-alpha.2]",
     "APIGateway_Citizen": "[1.1.6]",
-    "Berit": "[2.0.6]",
+    "Berit": "[2.0.7]",
     "Heroma": "[2.1.23]",
     "UiPath.Excel.Activities": "[2.20.2]",
     "UiPath.System.Activities": "[24.3.1]",
@@ -17,7 +17,7 @@
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "23.4.5.0",
-  "projectVersion": "1.0.14",
+  "projectVersion": "1.0.15",
   "runtimeOptions": {
     "autoDispose": false,
     "netFrameworkLazyLoading": false,
@@ -88,6 +88,18 @@
         "testCaseType": "TestCase",
         "executionTemplateType": "Local",
         "fileName": "Tests\\WorkflowTestCaseTemplate.xaml"
+      },
+      {
+        "editingStatus": "Publishable",
+        "testCaseId": "5ca4cb3f-b097-4d05-a226-d9cd33459961",
+        "testCaseType": "TestCase",
+        "fileName": "Tests\\ForEachdtCalculatedResultsforLogMessage_Test.xaml"
+      },
+      {
+        "editingStatus": "Publishable",
+        "testCaseId": "21917920-145f-402d-9631-190843799f2c",
+        "testCaseType": "TestCase",
+        "fileName": "Tests\\GeneralTestCase.xaml"
       }
     ],
     "modernBehavior": false,
