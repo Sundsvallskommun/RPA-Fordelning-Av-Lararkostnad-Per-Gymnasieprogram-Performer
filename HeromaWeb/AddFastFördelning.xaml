@@ -35,7 +35,7 @@
   <this:AddFastFördelning.in_FackligRepresentant>
     <InArgument x:TypeArguments="x:Boolean" />
   </this:AddFastFördelning.in_FackligRepresentant>
-  <sap:VirtualizedContainerService.HintSize>1118,1486</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1623,1442</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -155,7 +155,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Add Fast Fördelning" sap:VirtualizedContainerService.HintSize="684,1381" sap2010:WorkflowViewState.IdRef="Sequence_481">
+  <Sequence DisplayName="Add Fast Fördelning" sap:VirtualizedContainerService.HintSize="684,1377" sap2010:WorkflowViewState.IdRef="Sequence_481">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="Verksamhet" />
       <Variable x:TypeArguments="x:String" Name="ProgramPercent" />
@@ -166,18 +166,18 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch Fill in kontering" sap:VirtualizedContainerService.HintSize="622,1270" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+    <TryCatch DisplayName="Try Catch Fill in kontering" sap:VirtualizedContainerService.HintSize="622,1266" sap2010:WorkflowViewState.IdRef="TryCatch_2">
       <TryCatch.Variables>
         <Variable x:TypeArguments="x:Int32" Name="Index" />
       </TryCatch.Variables>
       <TryCatch.Try>
-        <ui:ForEach x:TypeArguments="sd:DataColumn" sap2010:Annotation.AnnotationText="Lägger till kontering i heroma för alla program i fallet att ingen V-rad finns. dt_NewCalculatedResults.Columns&#xA; " CurrentIndex="[Index]" DisplayName="For Each kontering för när v-rad inte finns" sap:VirtualizedContainerService.HintSize="584,1020" sap2010:WorkflowViewState.IdRef="ForEach`1_49" Values="[in_dt_NewCalculatedResults.Columns]">
+        <ui:ForEach x:TypeArguments="sd:DataColumn" sap2010:Annotation.AnnotationText="Lägger till kontering i heroma för alla program i fallet att ingen V-rad finns. dt_NewCalculatedResults.Columns&#xA; " CurrentIndex="[Index]" DisplayName="For Each kontering för när v-rad inte finns" sap:VirtualizedContainerService.HintSize="584,1016" sap2010:WorkflowViewState.IdRef="ForEach`1_49" Values="[in_dt_NewCalculatedResults.Columns]">
           <ui:ForEach.Body>
             <ActivityAction x:TypeArguments="sd:DataColumn">
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="sd:DataColumn" Name="column" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="548,837" sap2010:WorkflowViewState.IdRef="Sequence_295">
+              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="548,834" sap2010:WorkflowViewState.IdRef="Sequence_295">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="x:String" Name="Alersmessade" />
                 </Sequence.Variables>
@@ -187,7 +187,7 @@
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Assign sap:VirtualizedContainerService.HintSize="486,82" sap2010:WorkflowViewState.IdRef="Assign_119">
+                <Assign sap:VirtualizedContainerService.HintSize="486,81" sap2010:WorkflowViewState.IdRef="Assign_119">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:String">[Verksamhet]</OutArgument>
                   </Assign.To>
@@ -195,7 +195,7 @@
                     <InArgument x:TypeArguments="x:String">[column.ColumnName]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <Assign sap:VirtualizedContainerService.HintSize="486,82" sap2010:WorkflowViewState.IdRef="Assign_120">
+                <Assign sap:VirtualizedContainerService.HintSize="486,81" sap2010:WorkflowViewState.IdRef="Assign_120">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:String">[ProgramPercent]</OutArgument>
                   </Assign.To>
@@ -238,7 +238,7 @@
                     </Sequence>
                   </If.Else>
                 </If>
-                <If Condition="[out_KonteringSaknas OrElse out_MerÄn100ProcentFördelning OrElse out_VerksamhetSaknas OrElse out_FördelningstalSaknas]" DisplayName="If kontering inte genomförst" sap:VirtualizedContainerService.HintSize="486,325" sap2010:WorkflowViewState.IdRef="If_95">
+                <If Condition="[out_KonteringSaknas OrElse out_MerÄn100ProcentFördelning OrElse out_VerksamhetSaknas OrElse out_FördelningstalSaknas]" DisplayName="If kontering inte genomförst" sap:VirtualizedContainerService.HintSize="486,324" sap2010:WorkflowViewState.IdRef="If_95">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -253,7 +253,7 @@
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <Throw Exception="[New BusinessRuleException(If(out_KonteringSaknas, &quot;Kontering saknas&quot;, &#xA;            If(out_MerÄn100ProcentFördelning, &quot;Mer än 100 procent fördelning&quot;, &#xA;            If(out_VerksamhetSaknas, &quot;Verksamhet saknas&quot;, &#xA;            If(out_FördelningstalSaknas, &quot;Fördelningstal saknas&quot;, &#xA;            &quot;Inget fel hittat&quot;)))))]" sap:VirtualizedContainerService.HintSize="388,25" sap2010:WorkflowViewState.IdRef="Throw_3" />
+                      <Throw Exception="[New BusinessRuleException(If(out_KonteringSaknas, &quot;Kontering saknas&quot;, &#xD;&#xA;            If(out_MerÄn100ProcentFördelning, &quot;Mer än 100 procent fördelning&quot;, &#xD;&#xA;            If(out_VerksamhetSaknas, &quot;Verksamhetskoden: &quot; + Verksamhet + &quot; saknas i Heroma.&quot;, &#xD;&#xA;            If(out_FördelningstalSaknas, &quot;Fördelningstal saknas&quot;, &#xD;&#xA;            &quot;Inget fel hittat&quot;)))))]" sap:VirtualizedContainerService.HintSize="388,25" sap2010:WorkflowViewState.IdRef="Throw_3" />
                     </Sequence>
                   </If.Then>
                   <If.Else>

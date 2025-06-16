@@ -6,7 +6,7 @@
   "dependencies": {
     "API.Gateway_General": "[1.0.4-alpha.2]",
     "APIGateway_Citizen": "[1.1.6]",
-    "Berit": "[2.0.10]",
+    "Berit": "[2.0.11]",
     "Heroma": "[2.1.23]",
     "UiPath.Excel.Activities": "[2.20.2]",
     "UiPath.System.Activities": "[24.3.1]",
