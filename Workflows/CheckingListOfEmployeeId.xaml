@@ -5,7 +5,7 @@
     <x:Property Name="in_dt_FoundTeacher" Type="InArgument(sd:DataTable)" />
     <x:Property Name="out_EmployeeID" Type="OutArgument(x:String)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>2028,1449</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>2283,3299</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -120,9 +120,10 @@
       <AssemblyReference>WindowsBase</AssemblyReference>
       <AssemblyReference>Berit</AssemblyReference>
       <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Checking List Of EmployeeId" sap:VirtualizedContainerService.HintSize="1105,1384" sap2010:WorkflowViewState.IdRef="Sequence_493">
+  <Sequence DisplayName="Checking List Of EmployeeId" sap:VirtualizedContainerService.HintSize="2293,3234" sap2010:WorkflowViewState.IdRef="Sequence_493">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_EmploymentRowsCheckBefattning" />
       <Variable x:TypeArguments="x:Boolean" Name="BefattningOK" />
@@ -134,12 +135,12 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <If Condition="[in_dt_FoundTeacher.RowCount = 0]" DisplayName="If No Person found" sap:VirtualizedContainerService.HintSize="1043,249" sap2010:WorkflowViewState.IdRef="If_133">
+    <If Condition="[in_dt_FoundTeacher.RowCount = 0]" DisplayName="If No Person found" sap:VirtualizedContainerService.HintSize="2231,248" sap2010:WorkflowViewState.IdRef="If_133">
       <If.Then>
         <Throw Exception="[New BusinessRuleException(&quot;Ingen anställning hittades.&quot;)]" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Throw_26" />
       </If.Then>
       <If.Else>
-        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_507">
+        <Sequence sap:VirtualizedContainerService.HintSize="450,103" sap2010:WorkflowViewState.IdRef="Sequence_507">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -148,10 +149,10 @@
         </Sequence>
       </If.Else>
     </If>
-    <ui:FilterDataTable DataTable="[in_dt_FoundTeacher]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="1043,161" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dt_EmployeeID]" SelectColumnsMode="Keep">
+    <ui:FilterDataTable DataTable="[in_dt_FoundTeacher]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="2231,161" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dt_EmployeeID]" SelectColumnsMode="Keep">
       <ui:FilterDataTable.Filters>
         <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
-          <ui:FilterOperationArgument Column="{x:Null}" Operand="{x:Null}" BooleanOperator="And" Operator="LT" />
+          <ui:FilterOperationArgument Column="{x:Null}" Operand="{x:Null}" BooleanOperator="And" Operator="CONTAINS" />
         </scg:List>
       </ui:FilterDataTable.Filters>
       <ui:FilterDataTable.SelectColumns>
@@ -160,7 +161,7 @@
         </scg:List>
       </ui:FilterDataTable.SelectColumns>
     </ui:FilterDataTable>
-    <If Condition="[dt_EmployeeID.Rows.Count &lt; 2]" DisplayName="If More Than 1 row" sap:VirtualizedContainerService.HintSize="1043,783" sap2010:WorkflowViewState.IdRef="If_130">
+    <If Condition="[dt_EmployeeID.Rows.Count &lt; 2]" DisplayName="If More Than 1 row" sap:VirtualizedContainerService.HintSize="2231,2634" sap2010:WorkflowViewState.IdRef="If_130">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
@@ -168,14 +169,14 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence DisplayName="1" sap:VirtualizedContainerService.HintSize="548,623" sap2010:WorkflowViewState.IdRef="Sequence_496">
+        <Sequence DisplayName="1" sap:VirtualizedContainerService.HintSize="496,322" sap2010:WorkflowViewState.IdRef="Sequence_496">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Assign DisplayName="Assign EmployeeID" sap:VirtualizedContainerService.HintSize="486,82" sap2010:WorkflowViewState.IdRef="Assign_227">
+          <Assign DisplayName="Assign EmployeeID" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_227">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[out_EmployeeID]</OutArgument>
             </Assign.To>
@@ -188,7 +189,40 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </Assign>
-          <If Condition="[in_dt_FoundTeacher.RowCount &gt; 1]" DisplayName="If More than one hit" sap:VirtualizedContainerService.HintSize="486,390" sap2010:WorkflowViewState.IdRef="If_129">
+          <he:Open_Employment DisplayName="Open Employment" sap:VirtualizedContainerService.HintSize="434,25" sap2010:WorkflowViewState.IdRef="Open_Employment_6" />
+          <he:Get_Employment_Rows DisplayName="Get Employment Rows" EmploymentRows="[dt_EmploymentRowsCheckBefattning]" sap:VirtualizedContainerService.HintSize="434,25" sap2010:WorkflowViewState.IdRef="Get_Employment_Rows_6" />
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="more than 1" sap:VirtualizedContainerService.HintSize="1690,2475" sap2010:WorkflowViewState.IdRef="Sequence_497">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="sd:DataTable" Name="dt_EmployeeID10" />
+          </Sequence.Variables>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:FilterDataTable DataTable="[in_dt_FoundTeacher]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="1628,161" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[dt_EmployeeID10]" SelectColumnsMode="Keep">
+            <ui:FilterDataTable.Filters>
+              <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
+                  <ui:FilterOperationArgument.Column>
+                    <InArgument x:TypeArguments="x:String">["Personnr"]</InArgument>
+                  </ui:FilterOperationArgument.Column>
+                  <ui:FilterOperationArgument.Operand>
+                    <InArgument x:TypeArguments="x:String">[" 10"]</InArgument>
+                  </ui:FilterOperationArgument.Operand>
+                </ui:FilterOperationArgument>
+              </scg:List>
+            </ui:FilterDataTable.Filters>
+            <ui:FilterDataTable.SelectColumns>
+              <scg:List x:TypeArguments="InArgument" Capacity="4">
+                <InArgument x:TypeArguments="x:String">["Personnr"]</InArgument>
+              </scg:List>
+            </ui:FilterDataTable.SelectColumns>
+          </ui:FilterDataTable>
+          <If Condition="[dt_EmployeeID10.Rows.Count &lt; 2]" DisplayName="If More Than 1 row" sap:VirtualizedContainerService.HintSize="1628,2042" sap2010:WorkflowViewState.IdRef="If_137">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
@@ -196,64 +230,60 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <If.Then>
-              <Sequence sap:VirtualizedContainerService.HintSize="450,201" sap2010:WorkflowViewState.IdRef="Sequence_494">
+              <Assign DisplayName="Assign EmployeeID Only one id start 10" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_237">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[out_EmployeeID]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[dt_EmployeeID10(0)("Personnr").ToString.Substring(dt_EmployeeID10(0)("Personnr").ToString.Length-4).ToString]</InArgument>
+                </Assign.Value>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <hs:Clearing_Persons_Under__Valda_personer_ DisplayName="Clearing Persons Under 'Valda personer' with id" sap:VirtualizedContainerService.HintSize="388,25" sap2010:WorkflowViewState.IdRef="Clearing_Persons_Under__Valda_personer__2" />
-                <hs:Search_Persons in_IncludeArchivedEmployees="{x:Null}" in_IncludeDisplacedEmployees="{x:Null}" in_IncludeExternalResources="{x:Null}" in_IncludeNewEmployees="{x:Null}" in_IncludeResourceSchedules="{x:Null}" in_IncludeTerminatedEmployees="{x:Null}" in_IncludeWorkTimeRegister="{x:Null}" in_PersonsAllPATeams="{x:Null}" in_ResetSearchTerms="{x:Null}" DisplayName="Private: Search Persons with id" sap:VirtualizedContainerService.HintSize="388,25" sap2010:WorkflowViewState.IdRef="Search_Persons_7" in_EmployeeId="[out_EmployeeID]" in_PersonIdNumber="[in_TeacherPersonNumber]">
-                  <hs:Search_Persons.in_RemoveAllSelectedPersons>
-                    <InArgument x:TypeArguments="x:Boolean" />
-                  </hs:Search_Persons.in_RemoveAllSelectedPersons>
-                </hs:Search_Persons>
-              </Sequence>
+              </Assign>
             </If.Then>
             <If.Else>
-              <Sequence sap:VirtualizedContainerService.HintSize="450,103" sap2010:WorkflowViewState.IdRef="Sequence_495">
+              <Sequence sap:VirtualizedContainerService.HintSize="1149,1883" sap2010:WorkflowViewState.IdRef="Sequence_518">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-              </Sequence>
-            </If.Else>
-          </If>
-        </Sequence>
-      </If.Then>
-      <If.Else>
-        <Sequence DisplayName="more than 1" sap:VirtualizedContainerService.HintSize="450,228" sap2010:WorkflowViewState.IdRef="Sequence_497">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <Throw Exception="[new BusinessRuleException(&quot;Finns fler än 2 anställningsnummer, vet inte vilket som är rätt.&quot;)]" sap:VirtualizedContainerService.HintSize="388,25" sap2010:WorkflowViewState.IdRef="Throw_24" />
-          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="CommentOut_1">
-            <ui:CommentOut.Body>
-              <Sequence sap2010:Annotation.AnnotationText="om man hittar alla befattningar som är okej" DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,286" sap2010:WorkflowViewState.IdRef="Sequence_505">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_EmployeeID]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+                <ui:FilterDataTable DataTable="[in_dt_FoundTeacher]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="1087,161" sap2010:WorkflowViewState.IdRef="FilterDataTable_4" OutputDataTable="[dt_EmployeeID10]" SelectColumnsMode="Keep">
+                  <ui:FilterDataTable.Filters>
+                    <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                      <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
+                        <ui:FilterOperationArgument.Column>
+                          <InArgument x:TypeArguments="x:String">["Personnr"]</InArgument>
+                        </ui:FilterOperationArgument.Column>
+                        <ui:FilterOperationArgument.Operand>
+                          <InArgument x:TypeArguments="x:String">[" 10"]</InArgument>
+                        </ui:FilterOperationArgument.Operand>
+                      </ui:FilterOperationArgument>
+                    </scg:List>
+                  </ui:FilterDataTable.Filters>
+                  <ui:FilterDataTable.SelectColumns>
+                    <scg:List x:TypeArguments="InArgument" Capacity="4">
+                      <InArgument x:TypeArguments="x:String">["Personnr"]</InArgument>
+                    </scg:List>
+                  </ui:FilterDataTable.SelectColumns>
+                </ui:FilterDataTable>
+                <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_EmployeeID10]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="1087,1280" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
                   <ui:ForEachRow.Body>
                     <ActivityAction x:TypeArguments="sd:DataRow">
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                       </ActivityAction.Argument>
-                      <Sequence DisplayName="Check Befattning" sap:VirtualizedContainerService.HintSize="1053,1159" sap2010:WorkflowViewState.IdRef="Sequence_502">
+                      <Sequence DisplayName="Check Befattning" sap:VirtualizedContainerService.HintSize="1053,1163" sap2010:WorkflowViewState.IdRef="Sequence_502">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <Assign DisplayName="Assign EmployeeID" sap:VirtualizedContainerService.HintSize="991,81" sap2010:WorkflowViewState.IdRef="Assign_228">
+                        <Assign DisplayName="Assign EmployeeID" sap:VirtualizedContainerService.HintSize="991,82" sap2010:WorkflowViewState.IdRef="Assign_228">
                           <Assign.To>
                             <OutArgument x:TypeArguments="x:String">[out_EmployeeID]</OutArgument>
                           </Assign.To>
@@ -261,7 +291,7 @@
                             <InArgument x:TypeArguments="x:String">[CurrentRow("Personnr").ToString.Substring(CurrentRow("Personnr").ToString.Length-4).ToString]</InArgument>
                           </Assign.Value>
                         </Assign>
-                        <Assign DisplayName="Assign Befattning" sap:VirtualizedContainerService.HintSize="991,81" sap2010:WorkflowViewState.IdRef="Assign_229">
+                        <Assign DisplayName="Assign Befattning" sap:VirtualizedContainerService.HintSize="991,82" sap2010:WorkflowViewState.IdRef="Assign_229">
                           <Assign.To>
                             <OutArgument x:TypeArguments="x:String">[Befattning]</OutArgument>
                           </Assign.To>
@@ -284,7 +314,7 @@
                         <hs:Create_Temporary_Group DisplayName="Create Temporary Group" sap:VirtualizedContainerService.HintSize="991,25" sap2010:WorkflowViewState.IdRef="Create_Temporary_Group_4" />
                         <he:Open_Employment DisplayName="Open Employment" sap:VirtualizedContainerService.HintSize="991,25" sap2010:WorkflowViewState.IdRef="Open_Employment_3" />
                         <he:Get_Employment_Rows DisplayName="Get Employment Rows" EmploymentRows="[dt_EmploymentRowsCheckBefattning]" sap:VirtualizedContainerService.HintSize="991,25" sap2010:WorkflowViewState.IdRef="Get_Employment_Rows_3" />
-                        <Assign DisplayName="Assign Befattning" sap:VirtualizedContainerService.HintSize="991,81" sap2010:WorkflowViewState.IdRef="Assign_230">
+                        <Assign DisplayName="Assign Befattning" sap:VirtualizedContainerService.HintSize="991,82" sap2010:WorkflowViewState.IdRef="Assign_230">
                           <Assign.To>
                             <OutArgument x:TypeArguments="x:String">[Befattning]</OutArgument>
                           </Assign.To>
@@ -297,7 +327,7 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                         </Assign>
-                        <If Condition="[in_ListOfBefattningar.Contains(Befattning)]" DisplayName="Check if ok befattning" sap:VirtualizedContainerService.HintSize="991,425" sap2010:WorkflowViewState.IdRef="If_131">
+                        <If Condition="[in_ListOfBefattningar.Contains(Befattning)]" DisplayName="Check if ok befattning" sap:VirtualizedContainerService.HintSize="991,426" sap2010:WorkflowViewState.IdRef="If_131">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
@@ -305,14 +335,14 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <If.Then>
-                            <Sequence DisplayName="Befattning ok" sap:VirtualizedContainerService.HintSize="496,257" sap2010:WorkflowViewState.IdRef="Sequence_500">
+                            <Sequence DisplayName="Befattning ok" sap:VirtualizedContainerService.HintSize="496,258" sap2010:WorkflowViewState.IdRef="Sequence_500">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <Assign DisplayName="Assign BefattningOK" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_231">
+                              <Assign DisplayName="Assign BefattningOK" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_231">
                                 <Assign.To>
                                   <OutArgument x:TypeArguments="x:Boolean">[BefattningOK]</OutArgument>
                                 </Assign.To>
@@ -346,49 +376,41 @@
                   </ui:ForEachRow.Body>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:ForEachRow>
-                <If Condition="[Not BefattningOK]" DisplayName="If Not BefattningOK" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="If_132">
+                <If Condition="[Not BefattningOK]" DisplayName="If Not BefattningOK" sap:VirtualizedContainerService.HintSize="1087,251" sap2010:WorkflowViewState.IdRef="If_132">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <If.Then>
-                    <Sequence DisplayName="Throw No Befattning Found" sap:VirtualizedContainerService.HintSize="450,136" sap2010:WorkflowViewState.IdRef="Sequence_503">
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                      <Throw DisplayName="Throw No befattning found " Exception="[New BusinessRuleException(&quot;Hittar ingen anställning med befattning: &quot; + String.Join(&quot;, &quot;, in_ListOfBefattningar))]" sap:VirtualizedContainerService.HintSize="388,25" sap2010:WorkflowViewState.IdRef="Throw_23" />
-                    </Sequence>
+                    <Throw DisplayName="Throw No befattning found " Exception="[New BusinessRuleException(&quot;Hittar ingen anställning med befattning: &quot; + String.Join(&quot;, &quot;, in_ListOfBefattningar))]" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Throw_29" />
                   </If.Then>
                   <If.Else>
-                    <Sequence sap:VirtualizedContainerService.HintSize="450,203" sap2010:WorkflowViewState.IdRef="Sequence_504">
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Anställning med ok befattning hittad. Befattning: &quot; + Befattning]" />
-                    </Sequence>
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,92" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Anställning med ok befattning hittad. Befattning: &quot; + Befattning]" />
                   </If.Else>
                 </If>
               </Sequence>
-            </ui:CommentOut.Body>
+            </If.Else>
+          </If>
+          <Assign DisplayName="Assign EmployeeID" sap:VirtualizedContainerService.HintSize="1628,81" sap2010:WorkflowViewState.IdRef="Assign_238">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[out_EmployeeID]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[dt_EmployeeID(0)("Personnr").ToString.Substring(dt_EmployeeID(0)("Personnr").ToString.Length-4).ToString]</InArgument>
+            </Assign.Value>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-          </ui:CommentOut>
+          </Assign>
         </Sequence>
       </If.Else>
     </If>
